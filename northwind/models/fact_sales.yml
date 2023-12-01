@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: fact_sales
+    description: Sales transaction fact table. One row per product sold on an order.
+    columns:
+      - name: OrderID
+        description: Foreign key to Order Details.
+        tests:
+          - not_null
+      - name: CustomerKey
+        description: Foreign key to DimCustomer.
+      - name: EmployeeKey
+        description: Foreign key to DimEmployee.
+      - name: OrderDateKey
+        description: Role play Order Date Dimension key for DimDate.
+      - name: ShippedDateKey
+        description: Role play Shipped Date Dimension key for DimDate.
+      - name: Quantity
+        description: Number of products sold.
+        tests:
+          - not_null
+      - name: UnitPrice
+        description: Price per product unit.
+        tests:
+          - not_null
+      - name: DiscountedAmount
+        description: Unit price multiplied by discount.
+        tests:
+          - not_null
+      - name: SoldAmount
+        description: Quantity multiplied by unit price, less discount amount for each item on the order.
+        tests:
+          - not_null
+      - name: FreightAmount
+        description: Freight amount split evenly among items on the order (freight/sum of quantity).
+        tests:
+          - not_null
