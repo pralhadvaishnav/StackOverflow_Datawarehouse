@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: dim_user
+    description: Conformed User Dimension. One row per Stack Overflow user.
+    columns:
+      - name: user_id
+        data_type: int
+        description: The surrogate key for the user.
+        tests:
+          - not_null
+          - unique
+      - name: display_name
+        data_type: varchar(255)
+        description: The display name of the user on Stack Overflow.
+        tests:
+          - not_null
+      - name: reputation
+        data_type: int
+        description: The reputation points of the user.
+        tests:
+          - not_null
+      - name: creation_date
+        data_type: timestamp
+        description: The date and time when the user account was created.
+        tests:
+          - not_null
+      - name: last_access_date
+        data_type: timestamp
+        description: The date and time of the user's last access to Stack Overflow.
+        tests:
+          - not_null
+      - name: location
+        data_type: varchar(255)
+        description: The location information provided by the user (if available).
+      - name: about_me
+        data_type: text
+        description: A brief description provided by the user about themselves.
+      - name: website_url
+        data_type: varchar(255)
+        description: The URL to the user's website (if available).
+      - name: profile_image_url
+        data_type: varchar(255)
+        description: The URL to the user's profile image.
+      - name: is_employee
+        data_type: boolean
+        description: Flag indicating whether the user is a Stack Overflow employee.
+        tests:
+          - not_null
+      - name: last_modified_date
+        data_type: timestamp
+        description: The date and time when the user information was last modified.
+        tests:
+          - not_null

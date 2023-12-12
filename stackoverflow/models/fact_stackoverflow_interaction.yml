@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: fact_stackoverflow_interaction
+    description: Stack Overflow interaction fact table. One row per interaction.
+    columns:
+      - name: interaction_key
+        description: Degenerate dimension for the interaction.
+        tests:
+          - unique
+          - not_null
+      - name: userkey
+        description: Dimension key for dim_user
+      - name: postkey
+        description: Dimension key for dim_post
+      - name: timekey
+        description: Dimension key for dim_time
+      - name: tagkey
+        description: Dimension key for dim_tag
+      - name: votetypeid
+        description: Dimension key for dim_vote_type
+      - name: commentkey
+        description: Dimension key for dim_comment
+      - name: badgekey
+        description: Dimension key for dim_badge
+      - name: interactiontype
+        description: Type of interaction (e.g., comment, vote, badge).
+      - name: interactiondate
+        description: Date and time of the interaction.
+      - name: interactioncount
+        description: Count of interactions for the given type.
+

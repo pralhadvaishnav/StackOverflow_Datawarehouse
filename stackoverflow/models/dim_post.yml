@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: dim_post
+    description: Conformed Post Dimension. One row per Stack Overflow post.
+    columns:
+      - name: post_key
+        data_type: int
+        description: The surrogate key for the post.
+        tests:
+          - not_null
+          - unique
+      - name: post_id
+        data_type: int
+        description: The unique identifier for the post.
+        tests:
+          - not_null
+          - unique
+      - name: title
+        data_type: varchar(255)
+        description: The title of the post.
+        tests:
+          - not_null
+      - name: body
+        data_type: text
+        description: The body content of the post.
+        tests:
+          - not_null
+      - name: creation_date
+        data_type: timestamp
+        description: The date and time when the post was created.
+        tests:
+          - not_null
+      - name: score
+        data_type: int
+        description: The score of the post.
+        tests:
+          - not_null
+      - name: owner_user_key
+        data_type: int
+        description: The surrogate key of the post owner.
+        tests:
+          - not_null
+          - unique

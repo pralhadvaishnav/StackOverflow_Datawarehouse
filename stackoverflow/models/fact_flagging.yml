@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: fact_flagging
+    description: Flagging fact table. One row per flagged interaction.
+    columns:
+      - name: flagging_key
+        description: Degenerate dimension for the flagged interaction.
+        tests:
+          - unique
+          - not_null
+      - name: userkey
+        description: Dimension key for dim_user
+      - name: postkey
+        description: Dimension key for dim_post
+      - name: timekey
+        description: Dimension key for dim_time
+      - name: moderatorkey
+        description: Dimension key for dim_moderator
+      - name: flagtypekey
+        description: Dimension key for dim_flag_type
+      - name: flagstatuskey
+        description: Dimension key for dim_flag_status
+      - name: flagreasonkey
+        description: Dimension key for dim_flag_reason
+      - name: interactiondate
+        description: Date and time of the flagged interaction.

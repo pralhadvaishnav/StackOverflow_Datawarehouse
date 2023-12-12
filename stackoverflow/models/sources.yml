@@ -1,0 +1,94 @@
+version: 2
+
+sources:
+  - name: stackoverflow
+    database: raw
+    schema: stackoverflow
+
+    tables:
+      - name: dim_user
+        columns:
+          - name: user_key
+            tests:
+              - unique
+          - name: user_id
+            tests:
+              - unique
+          - name: display_name
+          - name: reputation
+          - name: creation_date
+          - name: last_access_date
+          - name: location
+
+      - name: dim_post
+        columns:
+          - name: post_key
+            tests:
+              - unique
+          - name: post_id
+            tests:
+              - unique
+          - name: title
+          - name: body
+          - name: creation_date
+          - name: score
+          - name: owner_user_key
+            tests:
+              - unique
+
+      - name: dim_time
+        columns:
+          - name: time_key
+            tests:
+              - unique
+          - name: date
+          - name: day_of_week
+          - name: month
+          - name: year
+
+      - name: dim_comment
+        columns:
+          - name: comment_key
+            tests:
+              - unique
+          - name: comment_id
+            tests:
+              - unique
+          - name: comment_text
+          - name: user_key
+            tests:
+              - unique
+          - name: post_key
+            tests:
+              - unique
+          - name: creation_date
+
+      - name: fact_stackoverflow_interaction
+        columns:
+          - name: interaction_key
+            tests:
+              - unique
+          - name: user_key
+          - name: post_key
+          - name: time_key
+          - name: tag_key
+          - name: vote_type_id
+          - name: comment_key
+          - name: badge_key
+          - name: interaction_type
+          - name: interaction_date
+          - name: interaction_count
+
+      - name: fact_flagging
+        columns:
+          - name: flagging_key
+            tests:
+              - unique
+          - name: user_key
+          - name: post_key
+          - name: time_key
+          - name: moderator_key
+          - name: flag_type_key
+          - name: flag_status_key
+          - name: flag_reason_key
+          - name: interaction_date

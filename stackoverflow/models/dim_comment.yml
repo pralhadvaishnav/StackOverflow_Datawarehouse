@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: dim_comment
+    description: Conformed Comment Dimension. One row per Stack Overflow comment.
+    columns:
+      - name: comment_key
+        data_type: int
+        description: The surrogate key for the comment.
+        tests:
+          - not_null
+          - unique
+      - name: comment_id
+        data_type: int
+        description: The unique identifier for the comment.
+        tests:
+          - not_null
+          - unique
+      - name: comment_text
+        data_type: text
+        description: The content of the comment.
+        tests:
+          - not_null
+      - name: user_key
+        data_type: int
+        description: The surrogate key of the comment author.
+        tests:
+          - not_null
+          - unique
+      - name: post_key
+        data_type: int
+        description: The surrogate key of the post associated with the comment.
+        tests:
+          - not_null
+          - unique
+      - name: creation_date
+        data_type: timestamp
+        description: The date and time when the comment was created.
+        tests:
+          - not_null
